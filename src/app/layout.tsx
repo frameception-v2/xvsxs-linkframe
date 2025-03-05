@@ -8,6 +8,18 @@ import "~/app/globals.css";
 import { Providers } from "~/app/providers";
 import { AppSidebar } from "~/components/app-sidebar";
 import { NavActions } from "~/components/nav-actions";
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-nunito', 
+  display: 'swap',
+});
 import {
   Breadcrumb,
   BreadcrumbItem,
