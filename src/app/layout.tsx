@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Inter, Nunito } from 'next/font/google'
 import type { Metadata } from "next";
-import { getSession } from "~/auth";
-import { ThemeProviderClient } from "~/components/providers/theme-provider-client";
+import { ThemeProvider } from "~/components/providers/theme-provider";
 import { ThemeToggle } from "~/components/ui/theme-toggle";
 import { PROJECT_TITLE, PROJECT_DESCRIPTION } from "~/lib/constants";
 import "~/styles/globals.css";
@@ -54,12 +53,9 @@ export default async function RootLayout({
 }>) {
   const session = await getSession();
   return (
-    <html lang="en" className={`${inter?.variable} ${nunito?.variable} h-full`}>
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProviderClient>
-          <Providers session={session}>
-            <SidebarProvider>
-              {/* <AppSidebar /> */}
+        <ThemeProvider>
               <SidebarInset>
                 <header className="flex h-14 shrink-0 items-center gap-2">
                   <div className="flex flex-1 items-center gap-2 px-3">
@@ -67,31 +63,11 @@ export default async function RootLayout({
                     <SidebarTrigger />
                     <Separator orientation="vertical" className="mr-2 h-4" />
                   */}
-                    <Breadcrumb>
-                      <BreadcrumbList>
-                        <BreadcrumbItem>
-                          <BreadcrumbPage className="ml-2 line-clamp-1">
-                            {PROJECT_TITLE}
-                          </BreadcrumbPage>
-                        </BreadcrumbItem>
-                      </BreadcrumbList>
-                    </Breadcrumb>
-                  </div>
-                  <div className="ml-auto px-3 flex items-center gap-2">
-                    <ThemeToggle />
-                    <NavActions />
-                  </div>
-                </header>
-                <div className="flex flex-1 flex-col gap-4 px-4 py-10">
+                <header className="h-14 shrink-0" />
+                <main className="flex-1">
                   {children}
-                  {/* <div className="mx-auto h-24 w-full max-w-3xl rounded-xl bg-neutral-100/50 dark:bg-neutral-800/50" />
-                <div className="mx-auto h-full w-full max-w-3xl rounded-xl bg-neutral-100/50 dark:bg-neutral-800/50" /> 
-                */}
-                </div>
-              </SidebarInset>
-            </SidebarProvider>
-          </Providers>
-        </ThemeProviderClient>
+                </main>
+        </ThemeProvider>
       </body>
     </html>
   );
