@@ -1,14 +1,19 @@
 interface FrameResponse {
+  frames: Frame[];
+  message: string;
+}
+
+interface Frame {
   id: string;
   title: string;
-  buttons: Array<{
-    label: string;
-    action: 'post'|'link'|'mint';
-    target?: string;
-  }>;
-  image: string;
-  postUrl: string;
-  createdAt: number;
+  timestamp: number;
+  actions: FrameAction[];
+}
+
+interface FrameAction {
+  type: 'post' | 'redirect';
+  target: string;
+  label: string;
 }
 
 export async function fetchFrameData(frameId: string): Promise<FrameResponse> {
@@ -17,11 +22,12 @@ export async function fetchFrameData(frameId: string): Promise<FrameResponse> {
     throw new Error('NEYNAR_API_KEY environment variable not set');
   }
 
-  const response = await fetch(`https://api.neynar.com/v1/frames/${frameId}`, {
+  const response = await fetch(`https://api.neynar.com/v2/farcaster/frame?frame_id=${frameId}`, {
     headers: {
+      'Content-Type': 'application/json',
       'api_key': apiKey,
-      'content-type': 'application/json',
-    }
+    },
+    next: { revalidate: 60 },
   });
 
   if (!response.ok) {
