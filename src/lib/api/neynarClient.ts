@@ -28,6 +28,6 @@ export async function fetchFrameData(frameId: string): Promise<FrameResponse> {
     throw new Error(`Neynar API error: ${response.statusText}`);
   }
 
-  const data = await response.json();
-  return data.frame as FrameResponse;
+  const { frame } = await response.json();
+  return frame as FrameResponse;
 }
