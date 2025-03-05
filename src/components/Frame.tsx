@@ -19,7 +19,6 @@ import { truncateAddress } from "~/lib/truncateAddress";
 import { base, optimism } from "wagmi/chains";
 import { useSession } from "next-auth/react";
 import { createStore } from "mipd";
-import { Label } from "~/components/ui/label";
 import { PROJECT_TITLE } from "~/lib/constants";
 
 function ExampleCard() {
@@ -32,7 +31,7 @@ function ExampleCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Label>Place content in a Card here.</Label>
+        <div className="text-sm text-muted-foreground">Place content in a Card here.</div>
       </CardContent>
     </Card>
   );
