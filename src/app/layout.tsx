@@ -4,7 +4,7 @@ import { getSession } from "~/auth";
 import { ThemeProviderClient } from "~/components/providers/theme-provider-client";
 import { ThemeToggle } from "~/components/ui/theme-toggle";
 import { PROJECT_TITLE, PROJECT_DESCRIPTION } from "~/lib/constants";
-import "~/app/globals.css";
+import "~/styles/globals.css";
 import { Providers } from "~/app/providers";
 import { AppSidebar } from "~/components/app-sidebar";
 import { NavActions } from "~/components/nav-actions";
