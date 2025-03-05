@@ -11,7 +11,7 @@ Here's the prioritized implementation checklist:
 
 ### Profile System
 - [x] Create ProfileHeader component in /components/ui/ProfileHeader.tsx
-- [ ] Add Canvas element for dynamic glow effect in ProfileHeader
+- [x] Add Canvas element for dynamic glow effect in ProfileHeader
 - [ ] Implement social badges flex container with platform icons
 - [ ] Integrate Next/Image for profile picture with size variants
 - [ ] Add TypeScript props interface for user data and badges

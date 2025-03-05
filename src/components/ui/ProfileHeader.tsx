@@ -24,37 +24,56 @@ export function ProfileHeader({ userName, userBio, badges }: ProfileHeaderProps)
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Animated gradient setup
-    let animationFrameId: number;
-    let gradientOffset = 0;
+    // Set canvas size to match parent
+    const updateCanvasSize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    updateCanvasSize();
     
-    const drawGradient = () => {
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, `hsl(${gradientOffset}, 70%, 50%)`);
-      gradient.addColorStop(1, `hsl(${gradientOffset + 60}, 70%, 50%)`);
-      
+    // Create radial gradient with primary color
+    const gradient = ctx.createRadialGradient(
+      canvas.width / 2,
+      canvas.height / 2,
+      0,
+      canvas.width / 2,
+      canvas.height / 2,
+      Math.max(canvas.width, canvas.height) / 2
+    );
+    gradient.addColorStop(0, 'rgba(129, 79, 239, 0.4)');
+    gradient.addColorStop(1, 'rgba(129, 79, 239, 0)');
+
+    // Pulsing animation
+    let animationFrameId: number;
+    let opacity = 0;
+    let increasing = true;
+
+    const animate = () => {
+      if (increasing) {
+        opacity += 0.02;
+        if (opacity >= 0.8) increasing = false;
+      } else {
+        opacity -= 0.02;
+        if (opacity <= 0.2) increasing = true;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = gradient;
+      ctx.globalAlpha = opacity;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      gradientOffset = (gradientOffset + 0.5) % 360;
-      animationFrameId = requestAnimationFrame(drawGradient);
+
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    drawGradient();
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
+    animate();
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
     <div className="relative h-48 w-full overflow-hidden">
       <canvas 
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full animate-pulse-slow"
-        width={1200}
-        height={400}
+        className="absolute inset-0 w-full h-full pointer-events-none"
       />
       
       <div className="relative z-10 p-6 flex flex-col items-center gap-4">
