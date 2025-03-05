@@ -7,17 +7,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: '#814FEF',
-          50: '#F5F1FE',
-          100: '#E9E0FD',
-          200: '#D6C4FC',
-          500: '#814FEF',
-          900: '#2A1454',
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
+        safe: {
+          top: "var(--safe-area-inset-top)",
+          right: "var(--safe-area-inset-right)",
+          bottom: "var(--safe-area-inset-bottom)",
+          left: "var(--safe-area-inset-left)",
+        }
+      },
+      borderRadius: {
+        DEFAULT: "var(--radius)",
       },
       fontFamily: {
-        sans: ['Nunito', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         spring: {
@@ -37,5 +44,6 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-safe-area'),
+    require('@tailwindcss/container-queries'),
   ],
 };
