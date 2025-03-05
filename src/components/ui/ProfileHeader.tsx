@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { cn } from "~/lib/utils";
 
 interface SocialBadge {
   platform: 'farcaster' | 'github';
@@ -12,6 +13,7 @@ interface ProfileHeaderProps {
   userName: string;
   userBio: string;
   badges: SocialBadge[];
+  className?: string;
 }
 
 export function ProfileHeader({ userName, userBio, badges }: ProfileHeaderProps) {
