@@ -5,7 +5,7 @@ Here's the prioritized implementation checklist:
 - [ ] Create Next.js 14 app with TypeScript template (`npx create-next-app@latest`)
 - [x] Install core dependencies: @neynar/nodejs-sdk, framer-motion, use-gesture, qrcode.react
 - [x] Configure tailwind.config.js with custom colors, fonts, and animations
-- [ ] Create /app/layout.tsx with root layout structure and font loading
+- [x] Create /app/layout.tsx with root layout structure and font loading
 - [x] Set up /styles/globals.css with CSS variables and base styles
 - [x] Implement /lib/api/neynarClient.ts with TypeScript interfaces
 
