@@ -3,13 +3,9 @@
 import { useEffect, useCallback, useState } from "react";
 import sdk, {
   AddFrame,
-  SignIn as SignInCore,
   type Context,
 } from "@farcaster/frame-sdk";
-
-import { config } from "~/components/providers/WagmiProvider";
-import { truncateAddress } from "~/lib/truncateAddress";
-import { base, optimism } from "wagmi/chains";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "~/components/ui/card";
 import { useSession } from "next-auth/react";
 import { createStore } from "mipd";
 import { PROJECT_TITLE } from "~/lib/constants";

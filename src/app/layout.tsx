@@ -9,7 +9,7 @@ const nunito = Nunito_Sans({
   display: 'swap',
 });
 
-const appUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+const appUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: PROJECT_TITLE,

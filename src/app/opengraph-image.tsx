@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/server";
 import { PROJECT_TITLE, PROJECT_DESCRIPTION } from "~/lib/constants";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -36,10 +36,10 @@ async function initializeFonts() {
 
   try {
     const regularFont = await loadFont(
-      join(process.cwd(), "public/fonts/Nunito-Regular.ttf")
+      join(process.cwd(), "public/fonts/Nunito-Sans/NunitoSans-Regular.ttf")
     );
     const semiBoldFont = await loadFont(
-      join(process.cwd(), "public/fonts/Nunito-SemiBold.ttf")
+      join(process.cwd(), "public/fonts/Nunito-Sans/NunitoSans-SemiBold.ttf") 
     );
 
     imageOptions = {
