@@ -42,7 +42,7 @@ export default async function RootLayout({
 }>) {
   const session = await getSession();
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter?.variable} ${nunito?.variable} h-full`}>
       <body>
         <ThemeProviderClient>
           <Providers session={session}>
