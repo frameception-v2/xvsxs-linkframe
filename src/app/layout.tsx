@@ -21,9 +21,7 @@ import {
   SidebarTrigger,
 } from "~/components/ui/sidebar";
 
-const appUrl =
-  process.env.NEXT_PUBLIC_URL ||
-  `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+const appUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: PROJECT_TITLE,
