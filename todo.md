@@ -17,8 +17,8 @@ Here's the prioritized implementation checklist:
 - [ ] Add TypeScript props interface for user data and badges
 
 ### Data Layer
-- [ ] Create /api/frame/[page].ts API route with GET handler
-- [ ] Implement Neynar API proxy with headers and query param validation
+- [x] Create /api/frame/[page].ts API route with GET handler
+- [x] Implement Neynar API proxy with headers and query param validation
 - [ ] Set up zod schema for frame response validation
 - [ ] Add error handling with custom HTTP status codes
 - [ ] Configure SWR caching strategy with 60s revalidation
