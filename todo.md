@@ -3,7 +3,7 @@ Here's the prioritized implementation checklist:
 ```markdown
 ### Foundation Layer
 - [ ] Create Next.js 14 app with TypeScript template (`npx create-next-app@latest`)
-- [ ] Install core dependencies: @neynar/nodejs-sdk, framer-motion, use-gesture, qrcode.react
+- [x] Install core dependencies: @neynar/nodejs-sdk, framer-motion, use-gesture, qrcode.react
 - [ ] Configure tailwind.config.js with custom colors, fonts, and animations
 - [ ] Create /app/layout.tsx with root layout structure and font loading
 - [ ] Set up /styles/globals.css with CSS variables and base styles
