@@ -13,10 +13,11 @@ interface ProfileHeaderProps {
   userName: string;
   userBio: string;
   badges: SocialBadge[];
+  src: string;
   className?: string;
 }
 
-export function ProfileHeader({ userName, userBio, badges }: ProfileHeaderProps) {
+export function ProfileHeader({ userName, userBio, badges, src, className }: ProfileHeaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   useEffect(() => {
@@ -72,7 +73,7 @@ export function ProfileHeader({ userName, userBio, badges }: ProfileHeaderProps)
   }, []);
 
   return (
-    <div className="relative h-48 w-full overflow-hidden">
+    <div className={cn("relative h-48 w-full overflow-hidden", className)}>
       <canvas 
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -81,7 +82,7 @@ export function ProfileHeader({ userName, userBio, badges }: ProfileHeaderProps)
       <div className="relative z-10 p-6 flex flex-col items-center gap-4">
         <div className="relative w-16 h-16 rounded-full border-2 border-white/20 bg-background/80 backdrop-blur-sm">
           <Image
-            src="/default-avatar.png"
+            src={src}
             alt="Profile picture"
             width={64}
             height={64}
@@ -105,7 +106,7 @@ export function ProfileHeader({ userName, userBio, badges }: ProfileHeaderProps)
               href={badge.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
             >
               {badge.platform === 'farcaster' ? (
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
