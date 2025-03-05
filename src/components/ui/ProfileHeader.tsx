@@ -105,11 +105,10 @@ export function ProfileHeader({ userName, userBio, badges, src, className }: Pro
             alt="Profile picture"
             width={64}
             height={64}
-            className="rounded-full"
+            className="rounded-full object-cover"
             priority
-            style={{
-              objectFit: "cover",
-            }}
+            width={64}
+            height={64}
           />
         </div>
         
@@ -125,7 +124,7 @@ export function ProfileHeader({ userName, userBio, badges, src, className }: Pro
               href={badge.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-muted hover:bg-accent transition-colors"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
               aria-label={`${badge.platform} profile`}
             >
               {getBadgeIcon(badge.platform)}
